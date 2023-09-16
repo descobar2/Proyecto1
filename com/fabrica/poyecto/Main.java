@@ -12,16 +12,17 @@ public class Main{
         Producto producto = new Producto();
         Material material = new Material();
         Comprar comprar = new Comprar();
+        Vender vender = new Vender();
 
             do{
             menu.mostrarMenu();
             opcion = entrada.nextInt();
             switch(opcion){
                 case 1:
-                    comprar.realiazCompra();
+                    comprar.realizar();
                 break;
                 case 2:
-                    // Venta
+                    vender.realizar();
                 break;
                 case 3:
                     menu.menuCrear();

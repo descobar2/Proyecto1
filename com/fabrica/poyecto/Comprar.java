@@ -9,10 +9,6 @@ public class Comprar implements Operaciones{
     private Scanner scan = new Scanner(System.in);
     private Archivo archivo = new Archivo();
 
-    public void realiazCompra(){
-        realizar();
-    }
-
     @Override
     public void realizar() {
         System.out.println("Ingrese producto de compra:");
