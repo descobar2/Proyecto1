@@ -7,12 +7,12 @@ public class Material {
     private String medida;
     private String costo;
     private Archivo archivo = new Archivo();
+    private Scanner scan = new Scanner(System.in);
 
     public void crearMaterial(){
-        archivo.registroMaterial(datoMaterial());
+        archivo.registroMaterial(datosMaterial());
     }
-    public String datoMaterial(){
-        Scanner scan = new Scanner(System.in);
+    public String datosMaterial(){
         System.out.println("Ingrese Nombre:");
         nombre = scan.nextLine();
         System.out.println("Ingrese descripcion:");

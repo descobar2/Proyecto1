@@ -11,13 +11,16 @@ public class Menu {
         System.out.println("\nFabrica de Muebles");
         System.out.println("1. Realizar una compra");
         System.out.println("2. Realizar una venta");
-        System.out.println("3. Crear un producto");
-        System.out.println("4. Crear material");
-        System.out.println("5. Buscar");
+        System.out.println("3. Crear");
         System.out.println("0. Salir");
     }
-    public void menuCompra(){
-
+    public void menuCrear(){
+        System.out.println("\nMenu Crear");
+        System.out.println("1. Nuevo producto");
+        System.out.println("2. Nuevo material");
+        System.out.println("3. Nuevo proveedor");   
+        System.out.println("4. Nuevo cliente");
+        System.out.println("5. Regresar");
     }
     public void menuVenta(){
 
@@ -28,7 +31,7 @@ public class Menu {
     public void menuModificar(){
 
     }        
-    public void menuBuscart(){
+    public void menuBuscar(){
         
     }
     public boolean menuSiNo(){

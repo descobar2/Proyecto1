@@ -1,5 +1,4 @@
 package com.fabrica.poyecto;
-import java.io.File;
 import java.util.Scanner;
 
 public class Producto {
@@ -11,7 +10,6 @@ public class Producto {
     private Material material = new Material();
     private Archivo archivo = new Archivo();
     private Scanner scan = new Scanner(System.in);
-    private File fProducto = new File ("producto.txt");
     private Menu menu = new Menu();
 
 
