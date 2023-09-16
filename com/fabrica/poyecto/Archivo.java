@@ -7,29 +7,33 @@ public class Archivo {
     private File fProveedor = new File ("proveedor.txt");
     private File fMaterial = new File ("material.txt");
     private File fProducto = new File ("producto.txt");
+    private File fInventario = new File ("inventario.txt");
     
     public void registroCliente(String cliente){  
         id = contarLineas(fCliente)+1;
         cliente = "C"+id+"%"+cliente;
-        regitrarDatos(cliente, fCliente);
+        registrarDatos(cliente, fCliente);
     }
     public void registroProveedor(String porveedor){
         id = contarLineas(fProveedor)+1;
         porveedor = "P"+id+"%"+porveedor;
-        regitrarDatos(porveedor, fProveedor);
+        registrarDatos(porveedor, fProveedor);
     }
     public void registroMaterial(String material){
         id = contarLineas(fMaterial)+1;
         material = "M"+id+"%"+material;
-        regitrarDatos(material, fMaterial);
+        registrarDatos(material, fMaterial);
     }
     public void registroProducto(String producto){
         id = contarLineas(fProducto)+1;
         producto = "P"+id+"%"+producto;
-        regitrarDatos(producto, fProducto);
+        registrarDatos(producto, fProducto);
+    }
+    public void registroInventario(String producto){
+        registrarDatos(producto, fInventario);
     }
 
-    public void regitrarDatos(String datos, File archivo){
+    public void registrarDatos(String datos, File archivo){
         try (FileWriter fw = new FileWriter(archivo, true);
             BufferedWriter bw = new BufferedWriter(fw);){
           
@@ -67,6 +71,13 @@ public class Archivo {
         }else{
             return false;
         }
+    }
+    public boolean buscarProducto(String buscar){
+        if(buscarRegistro(buscar, fProducto, 1, 0)==true){
+            return true;
+        }else{
+            return false;
+        }        
     }
     public String retoranaIdM(String buscar){
         String id=null;

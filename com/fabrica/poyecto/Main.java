@@ -11,13 +11,14 @@ public class Main{
         Persona persona = new Persona();
         Producto producto = new Producto();
         Material material = new Material();
+        Comprar comprar = new Comprar();
 
             do{
             menu.mostrarMenu();
             opcion = entrada.nextInt();
             switch(opcion){
                 case 1:
-                    // Compra
+                    comprar.realiazCompra();
                 break;
                 case 2:
                     // Venta
