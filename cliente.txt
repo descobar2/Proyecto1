@@ -1,1 +1,5 @@
 C1%0%123456%Nombre%Direccion
+M1%Madera%Madera tipo pino%ft%16.00
+M1%Pino%Madera para muebles%ft%16.00
+M1%Pino%Madera para muebles%ft%16.00
+M1%Pino%Madera para muebles%ft%16

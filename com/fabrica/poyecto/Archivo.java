@@ -1,29 +1,31 @@
 package com.fabrica.poyecto;
 import java.io.*;
 
-public class Operacion {
+public class Archivo {
+    private int id;
     private File fCliente = new File ("cliente.txt");
     private File fProveedor = new File ("proveedor.txt");
     private File fMaterial = new File ("material.txt");
     private File fProducto = new File ("producto.txt");
-    private int id;
-
+    
     public void registroCliente(String cliente){  
         id = contarLineas(fCliente)+1;
         cliente = "C"+id+"%"+cliente;
         regitrarDatos(cliente, fCliente);
     }
     public void registroProveedor(String porveedor){
-        id = contarLineas(fProveedor);
+        id = contarLineas(fProveedor)+1;
         porveedor = "P"+id+"%"+porveedor;
         regitrarDatos(porveedor, fProveedor);
     }
     public void registroMaterial(String material){
-        id = contarLineas(fMaterial);
-        
+        id = contarLineas(fMaterial)+1;
+        material = "M"+id+"%"+material;
         regitrarDatos(material, fMaterial);
     }
     public void registroProducto(String producto){
+        id = contarLineas(fProducto)+1;
+        producto = "P"+id+"%"+producto;
         regitrarDatos(producto, fProducto);
     }
 
@@ -39,6 +41,7 @@ public class Operacion {
                 fw.write(datos);
                 System.out.println("CA: Registro exitoso");
             }
+
         } catch (Exception e) {
             System.out.println("Error E/S: " + e);
         }
@@ -48,8 +51,7 @@ public class Operacion {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             
             if(archivo.exists() && (archivo.length() != 0)){
-                String linea;
-                while ((linea = br.readLine()) != null) {
+                while ((br.readLine()) != null) {
                 contadorLineas++;
                 }
             }
@@ -57,6 +59,48 @@ public class Operacion {
             e.printStackTrace();
         }
         return contadorLineas;
+    }
+
+    public boolean buscarMaterial(String buscar){
+        if(buscarRegistro(buscar, fMaterial, 1, 0)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public String retoranaIdM(String buscar){
+        String id=null;
+        try(FileReader fr = new FileReader(fMaterial);
+        BufferedReader br = new BufferedReader(fr);){
+            String linea;
+            while((linea = br.readLine()) !=null){
+               String[] arreglo = linea.split("%");
+                if(arreglo[1].equalsIgnoreCase(buscar)){
+                     id = arreglo[0];
+                     break;
+                }
+            }               
+        }catch(Exception e){
+            System.out.println("Error E/S: " + e);
+        }
+        return id;        
+    }
+    public boolean buscarRegistro(String buscar, File archivo, int campoBusqueda, int campoRetorno){
+        boolean existe = false;
+        try(FileReader fr = new FileReader(archivo);
+        BufferedReader br = new BufferedReader(fr);){
+            String linea;
+            while((linea = br.readLine()) !=null){
+               String[] arreglo = linea.split("%");
+                if(arreglo[campoBusqueda].equalsIgnoreCase(buscar)){
+                     existe = true;
+                     break;
+                }
+            }               
+        }catch(Exception e){
+            System.out.println("Error E/S: " + e);
+        }
+        return existe;
     }
 }
 

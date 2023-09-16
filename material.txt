@@ -1,0 +1,8 @@
+M1%Pino%Madera para mueble%ft%16.00
+M2%Cedro%Madera para muebles%ft%25.00
+M3%Pegamento%Pegamento para madera%ml%35.00
+M4%Tornillo%Tornillo 1/2 pulgada de madera%libra%5.00
+M5%Clavo%Clavos de 1/4 de pulgada%libra%3.50
+M6%Plastico%Plastico para muebles%Kilogramo%10.00
+M7%Tinte%Tinte caoba para madera%litro%2.00
+M8%Melamina%Material para muebles%ft2%160.00

@@ -5,16 +5,16 @@ public class Persona {
     private String cui;
     private String nombre;
     private String direccion;
-    Operacion operacion = new Operacion();
+    private Archivo archivo = new Archivo();
 
     public void crearCliente(){
-        operacion.registroCliente(solicitarDatos());       
+        archivo.registroCliente(solicitarDatos());       
     }
     public void crearProveedor(){
-        operacion.registroProveedor(solicitarDatos());
+        archivo.registroProveedor(solicitarDatos());
     }
 
-    public String solicitarDatos(){
+    private String solicitarDatos(){
     Scanner scan = new Scanner(System.in);
     System.out.println("Ingrese CUI:");
     cui = scan.nextLine();
