@@ -14,11 +14,15 @@ public class Comprar implements Operaciones{
         System.out.println("Ingrese producto de compra:");
         nombre = scan.nextLine();
         if(archivo.buscarMaterial(nombre)){
-            System.out.println("Ingrese cantidad:");
-            cantidad = scan.nextLine();
+            if(archivo.buscarInventario(nombre)){
+                //funcion agregar material
+            }else{
+                System.out.println("Ingrese cantidad:");
+                cantidad = scan.nextLine();
+                id = archivo.retoranaIdM(nombre);
+                archivo.registroInventario(id + "%" + cantidad);
+            }
             
-            id = archivo.retoranaIdM(nombre);
-            archivo.registroInventario(id + "%" + cantidad);
         }else{
             System.out.println("No es posible realizar accion. Producto no existe.");
         }

@@ -6,3 +6,5 @@ M5%Clavo%Clavos de 1/4 de pulgada%libra%3.50
 M6%Plastico%Plastico para muebles%Kilogramo%10.00
 M7%Tinte%Tinte caoba para madera%litro%2.00
 M8%Melamina%Material para muebles%ft2%160.00
+M9%Tapacanto%Cinta para cubrir canto de melamina%3/4%2.50
+M10%Tornillo%Tornillo de madera 1/2%unidad%1

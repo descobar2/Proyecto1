@@ -1,2 +1,3 @@
 P1%123456%El Arenal%Avenada Petapa
 P2%313233%Marco Lopez%Ciudad, Guatemala
+P3%123456%San Miguel%Avenida Bolibard, Guatemala

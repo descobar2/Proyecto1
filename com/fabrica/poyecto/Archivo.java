@@ -33,23 +33,6 @@ public class Archivo {
         registrarDatos(producto, fInventario);
     }
 
-    public void registrarDatos(String datos, File archivo){
-        try (FileWriter fw = new FileWriter(archivo, true);
-            BufferedWriter bw = new BufferedWriter(fw);){
-          
-            if(archivo.exists() && (archivo.length() != 0)){
-                bw.newLine();
-                bw.write(datos);
-                System.out.println("Registro exitoso");
-            }else{
-                fw.write(datos);
-                System.out.println("CA: Registro exitoso");
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error E/S: " + e);
-        }
-    }
     public int contarLineas(File archivo) {
         int contadorLineas = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
@@ -78,6 +61,13 @@ public class Archivo {
         }else{
             return false;
         }        
+    }
+    public boolean buscarInventario(String buscar){
+        if(buscarRegistro(retoranaIdM(buscar), fInventario, 0, 1)==true){
+            return true;
+        }else{
+            return false;
+        }
     }
     public String retoranaIdM(String buscar){
         String id=null;
@@ -113,5 +103,45 @@ public class Archivo {
         }
         return existe;
     }
+    public boolean modificarRegistro(String buscar, File archivo, int campoBusqueda, int campoAModificar, String valorNuevo){
+        boolean cambio = false;
+        String campo;
+        int valor=0;
+        try(FileReader fr = new FileReader(archivo);
+        BufferedReader br = new BufferedReader(fr);){
+            String linea;
+            while((linea = br.readLine()) !=null){
+               String[] arreglo = linea.split("%");
+                if(arreglo[campoBusqueda].equalsIgnoreCase(buscar)){
+                    campo = arreglo[campoAModificar];
+                    valor = Integer.parseInt(campo)+Integer.parseInt(valorNuevo);
+                    campo = "" + valor;
+                    arreglo[campoAModificar]= campo;
+                    cambio = true;
+                    break;
+                }
+            }               
+        }catch(Exception e){
+            System.out.println("Error E/S: " + e);
+        }
+        return cambio;
+    }
+    public void registrarDatos(String datos, File archivo){
+        try (FileWriter fw = new FileWriter(archivo, true);
+            BufferedWriter bw = new BufferedWriter(fw);){
+          
+            if(archivo.exists() && (archivo.length() != 0)){
+                bw.newLine();
+                bw.write(datos);
+                System.out.println("Registro exitoso");
+            }else{
+                fw.write(datos);
+                System.out.println("CA: Registro exitoso");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error E/S: " + e);
+        }
+    }    
 }
 

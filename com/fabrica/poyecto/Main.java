@@ -1,11 +1,11 @@
 package com.fabrica.poyecto;
-
 import java.util.Scanner;
 
 public class Main{
 
     public static void main(String[] args) {
-        int opcion=0;
+        String opcion;
+        Boolean salir=false;
         Scanner entrada = new Scanner(System.in);
         Menu menu = new Menu();
         Persona persona = new Persona();
@@ -15,45 +15,81 @@ public class Main{
         Vender vender = new Vender();
 
             do{
-            menu.mostrarMenu();
-            opcion = entrada.nextInt();
+            menu.principal();
+            opcion = entrada.nextLine();
             switch(opcion){
-                case 1:
+                case "1":
                     comprar.realizar();
                 break;
-                case 2:
+                case "2":
                     vender.realizar();
                 break;
-                case 3:
-                    menu.menuCrear();
-                    opcion = entrada.nextInt();
+                case "3":
+                    menu.editar();
+                break;
+                case "4":
+                    menu.crear();
+                    opcion = entrada.nextLine();
                     switch (opcion){
-                        case 1:
+                        case "1":
                             producto.crearPoducto();
                         break;
-                        case 2:
+                        case "2":                        
                             material.crearMaterial();
                         break;
-                        case 3:
+                        case "3":
                             persona.crearProveedor();
                         break;
-                        case 4:
+                        case "4":
                             persona.crearCliente();
                         break;
-                        case 5:
+                        case "5":
                         break;
                         default:
                             System.out.println("Valor invalido");
-                        break;                                                                
+                    break;                                                                
                     }
+                    break;
+                case "5":
+                    menu.buscar();
+                    opcion = entrada.nextLine();
+                    switch (opcion){
+                        case "1":
+                            System.out.println("Ingrese No. de orden: ");
+                            opcion = entrada.nextLine();
+                            System.out.println("Orden No. " + opcion);
+                            System.out.println("Estado: Materiales en bodega");
+                            break;
+                        case "2":
+                            System.out.println("Ingrese nombre de proveedor: ");
+                            opcion = entrada.nextLine();
+                            System.out.println("Nombre: Maderas el Angel");
+                            System.out.println("Direccion: Avenida petapa");
+                            break;                
+                        case "3":
+                            System.out.println("Ingrese NIT de cliente: ");
+                            opcion = entrada.nextLine();
+                            System.out.println("Nombre: Marco Polo");
+                            System.out.println("Direccion: Ciudad, Guatemala");
+                            break;            
+                        case "4":
+                            break;
+                        default:
+                            System.out.println("Valor invalido:");
+                            menu.menuSiNo();
+                        break;                
+                    }
+
                 break;
-                case 4:
-                    //Sin uso
+                case "0":
+                    salir = true;
+                    System.out.println("Programa cerrado");
                 break;
                 default:
-                break;
+                    System.out.println("Valor invalido, intente de nuevo");
+                    break;
             }
-        }while(opcion!=0);
-        entrada.close();
+        }while(!salir);
+    entrada.close();
     }
 }

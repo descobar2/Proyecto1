@@ -33,7 +33,7 @@ public class Producto {
                 cantidad = scan.nextLine();
                 id = archivo.retoranaIdM(nombreMaterial);
                 listaMarterial = listaMarterial + id + "%" + cantidad + "%";
-                System.out.println("Lista material: " + listaMarterial);
+                //System.out.println("Lista material: " + listaMarterial);
             }else{
                 System.out.println("El material no existe, desea crearlo: ");
                 if(menu.menuSiNo()){
@@ -42,7 +42,7 @@ public class Producto {
                     cantidad = scan.nextLine();
                     id = archivo.retoranaIdM(nombreMaterial);
                     listaMarterial = listaMarterial + id + "%" + cantidad + "%";
-                    System.out.println("Lista material: " + listaMarterial);
+                    //System.out.println("Lista material: " + listaMarterial);
                 }else{
                     System.out.println("Producto no fue creado");
                 }
