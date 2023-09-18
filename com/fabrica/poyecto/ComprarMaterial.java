@@ -18,7 +18,7 @@ public class ComprarMaterial implements Operaciones{
                 System.out.println("Ingrese cantida:");
                 cantidad = scan.nextLine();
                 id = archivo.retoranaIdM(nombre);
-                archivo.modificarInventario(id, cantidad); //funcion para modificar linea en inventario
+                archivo.modificarInventario(id, cantidad,"suma"); //funcion para modificar linea en inventario
             }else{
                 System.out.println("Ingrese cantidad:");
                 cantidad = scan.nextLine();
@@ -26,9 +26,7 @@ public class ComprarMaterial implements Operaciones{
                 archivo.registroInventario(id + "%" + cantidad);
             }            
         }else{
-            System.out.println("No es posible realizar accion. Producto no existe.");
+            System.out.println("No es posible realizar accion. Material no existe.");
         }
-
-    }
-    
+    }   
 }

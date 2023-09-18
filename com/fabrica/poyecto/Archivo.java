@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Archivo {
     private int id;
+    private String producto;
     private File fCliente = new File ("cliente.txt");
     private File fProveedor = new File ("proveedor.txt");
     private File fMaterial = new File ("material.txt");
@@ -73,8 +74,8 @@ public class Archivo {
             return false;
         }
     }
-    public boolean modificarInventario(String buscar, String nuevoValor){
-        if(modificarRegistro(buscar, fInventario, 0, 1, nuevoValor)==true){
+    public boolean modificarInventario(String buscar, String nuevoValor, String operacion){
+        if(modificarRegistro(buscar, fInventario, 0, 1, nuevoValor, operacion)==true){
             return true;
         }else{
             return false;
@@ -97,6 +98,39 @@ public class Archivo {
         }
         return id;        
     }
+    public String retornarProd(String buscar){
+        try(FileReader fr = new FileReader(fProducto);
+        BufferedReader br = new BufferedReader(fr);){
+            String linea;
+            while((linea = br.readLine()) !=null){
+               String[] arreglo = linea.split("%");
+                if(arreglo[1].equalsIgnoreCase(buscar)){
+                    producto = linea;
+                     break;
+                }
+            }               
+        }catch(Exception e){
+            System.out.println("Error E/S: " + e);
+        }        
+        return producto;
+    }
+    public int retornarDispI(String buscar){
+        int valor=0;
+        try(FileReader fr = new FileReader(fInventario);
+        BufferedReader br = new BufferedReader(fr);){
+            String linea;
+            while((linea = br.readLine()) !=null){
+               String[] arreglo = linea.split("%");
+                if(arreglo[0].equalsIgnoreCase(buscar)){
+                    valor = Integer.parseInt(arreglo[1]);
+                     break;
+                }
+            }               
+        }catch(Exception e){
+            System.out.println("Error E/S: " + e);
+        }        
+        return valor;
+    }    
     public boolean buscarRegistro(String buscar, File archivo, int campoBusqueda, int campoRetorno){
         boolean existe = false;
         try(FileReader fr = new FileReader(archivo);
@@ -104,9 +138,9 @@ public class Archivo {
             String linea;
             while((linea = br.readLine()) !=null){
                String[] arreglo = linea.split("%");
-                if(arreglo[campoBusqueda].equalsIgnoreCase(buscar)){
-                     existe = true;
-                     break;
+                if(arreglo[campoBusqueda].equalsIgnoreCase(buscar)){                    
+                    existe = true;
+                    break;
                 }
             }               
         }catch(Exception e){
@@ -114,7 +148,7 @@ public class Archivo {
         }
         return existe;
     }
-    public boolean modificarRegistro(String buscar, File archivo, int campoBusqueda, int campoAModificar, String valorNuevo){
+    public boolean modificarRegistro(String buscar, File archivo, int campoBusqueda, int campoAModificar, String valorNuevo, String oparacion){
         boolean cambio = false;
         String campo;
         int valor=0;
@@ -133,7 +167,12 @@ public class Archivo {
                 String[] arreglo = linea.split("%");
                 if(arreglo[campoBusqueda].equalsIgnoreCase(buscar)){
                     campo = arreglo[campoAModificar];
-                    valor = Integer.parseInt(campo)+Integer.parseInt(valorNuevo);
+                    if(oparacion=="suma"){
+                        valor = Integer.parseInt(campo)+Integer.parseInt(valorNuevo);
+                    }
+                    if(oparacion=="resta"){
+                        valor = Integer.parseInt(campo)-Integer.parseInt(valorNuevo);
+                    }
                     campo = "" + valor;
                     arreglo[campoAModificar]= campo;
                     linea ="";
