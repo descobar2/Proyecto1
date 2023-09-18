@@ -11,7 +11,7 @@ public class Main{
         Persona persona = new Persona();
         Producto producto = new Producto();
         Material material = new Material();
-        Comprar comprar = new Comprar();
+        ComprarMaterial comprar = new ComprarMaterial();
         Vender vender = new Vender();
 
             do{

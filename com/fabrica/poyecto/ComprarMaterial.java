@@ -2,7 +2,7 @@ package com.fabrica.poyecto;
 
 import java.util.Scanner;
 
-public class Comprar implements Operaciones{
+public class ComprarMaterial implements Operaciones{
     private String id;
     private String nombre;
     private String cantidad;
@@ -15,14 +15,16 @@ public class Comprar implements Operaciones{
         nombre = scan.nextLine();
         if(archivo.buscarMaterial(nombre)){
             if(archivo.buscarInventario(nombre)){
-                //funcion agregar material
+                System.out.println("Ingrese cantida:");
+                cantidad = scan.nextLine();
+                id = archivo.retoranaIdM(nombre);
+                archivo.modificarInventario(id, cantidad); //funcion para modificar linea en inventario
             }else{
                 System.out.println("Ingrese cantidad:");
                 cantidad = scan.nextLine();
                 id = archivo.retoranaIdM(nombre);
                 archivo.registroInventario(id + "%" + cantidad);
-            }
-            
+            }            
         }else{
             System.out.println("No es posible realizar accion. Producto no existe.");
         }
