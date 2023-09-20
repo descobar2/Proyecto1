@@ -6,6 +6,7 @@ public class Vender implements Operaciones{
     private Scanner scan = new Scanner(System.in);
     private Archivo archivo = new Archivo();
     private String nombre;
+    private String venta="";
     private String cProducto;
     private String cantidad;
     private String producto;
@@ -35,19 +36,22 @@ public class Vender implements Operaciones{
                 //Hacer llamada a funcion para validar inventario
                 if(archivo.retornarDispI(id)>valor){
                     archivo.modificarInventario(id, "" + valor, "resta");
-                    estado = "Orden ingresada";
+                    estado = "Materiales en bodega";
                 }else{
                     pedido = pedido + "%" + id + "%" + cantidad;
-                    //
                 }
             }
             if(pedido.length()>0){
-                idPD = archivo.regitroPedido(pedido);
+                estado = "Esperando materiales";
+                idPD = archivo.regitroPedido(pedido,estado);
                 System.out.println("Se genero pedido: "+ "PD" + idPD);
-                estado = "Pedido en proceso";
+                System.out.println("Estado: " + estado);
+                venta = "PD" + idPD + "%";
+            }else{
+                System.out.println("Estado: " + estado);
             }
-            archivo.registroVenta(idPD+"%"+nombre+"%"+cantidad,estado);
-            System.out.println(producto+" en produccion.");
+            venta = venta + nombre+ "%" + cProducto;
+            archivo.registroVenta(venta,estado);
         }else{
             System.out.println("No es posible realizar accion. Producto no existe");
         }

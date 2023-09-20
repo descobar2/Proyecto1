@@ -1,3 +1,9 @@
-PD1%M2%48%M4%2
-PD2%M2%10%M3%1
-PD3%M8%1%M9%10%M3%1%M4%100
+Esperando materiales%PD1%%M2%48
+Esperando materiales%PD2%%M2%48
+Esperando materiales%PD3%%M2%48
+Esperando materiales%PD4%%M2%48
+Esperando materiales%PD5%%M2%48
+Esperando materiales%PD6%%M2%48
+Esperando materiales%PD7%%M2%10%M3%1
+Esperando materiales%PD8%%M8%1%M9%10%M3%1
+Esperando materiales%PD9%%M3%1

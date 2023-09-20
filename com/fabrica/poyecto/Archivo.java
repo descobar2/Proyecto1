@@ -40,16 +40,16 @@ public class Archivo {
         registrarDatos(producto, fInventario);
         System.out.println("Registro exitoso.");
     }
-    public int regitroPedido(String pedido){
+    public int regitroPedido(String pedido, String estado){
         id = contarLineas(fPedido)+1;
-        pedido = "PD" + id + pedido;
+        pedido = estado + "%PD" + id + "%" + pedido;
         registrarDatos(pedido, fPedido);
         return id;
     }
     public String registroVenta(String venta, String estado){
         id = contarLineas(fVenta)+1;
-        venta = "V" + id + "%" + venta + "%" + estado;
-        registrarDatos(estado, fCliente);
+        venta = estado+"%V" + id + "%" + venta;
+        registrarDatos(venta, fVenta);
     return estado;
     }
     public int contarLineas(File archivo) {
