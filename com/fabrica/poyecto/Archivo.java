@@ -9,6 +9,8 @@ public class Archivo {
     private File fMaterial = new File ("material.txt");
     private File fProducto = new File ("producto.txt");
     private File fInventario = new File ("inventario.txt");
+    private File fPedido = new File ("pedido.txt");
+    private File fVenta = new File ("venta.txt");
     
     public void registroCliente(String cliente){  
         id = contarLineas(fCliente)+1;
@@ -38,7 +40,18 @@ public class Archivo {
         registrarDatos(producto, fInventario);
         System.out.println("Registro exitoso.");
     }
-
+    public int regitroPedido(String pedido){
+        id = contarLineas(fPedido)+1;
+        pedido = "PD" + id + pedido;
+        registrarDatos(pedido, fPedido);
+        return id;
+    }
+    public String registroVenta(String venta, String estado){
+        id = contarLineas(fVenta)+1;
+        venta = "V" + id + "%" + venta + "%" + estado;
+        registrarDatos(estado, fCliente);
+    return estado;
+    }
     public int contarLineas(File archivo) {
         int contadorLineas = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
