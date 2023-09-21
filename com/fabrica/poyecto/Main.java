@@ -37,13 +37,16 @@ public class Main{
                                     switch(opcion){
                                         case"1":
                                         //Proceso de corte
-                                        archivo.editarEstadoV();
+                                        vender.editarEstadoV("Proceso de corte");
                                         case"2":
                                         //Proceso de armado
+                                        vender.editarEstadoV("Proceso de armado");
                                         case"3":
                                         //Proceso de acabado
+                                        vender.editarEstadoV("Proceso de acabado");
                                         case"4":
                                         //Proceso de entrega
+                                        vender.editarEstadoV("Proceso de entrega");
                                     }
                                     break;
                                 case "2":

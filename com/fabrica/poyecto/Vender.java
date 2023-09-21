@@ -56,4 +56,8 @@ public class Vender implements Operaciones{
             System.out.println("No es posible realizar accion. Producto no existe");
         }
     }
+    public void editarEstadoV(String estado){
+                
+        archivo.modificarEstado(id, estado, "estado");
+    }
 }
