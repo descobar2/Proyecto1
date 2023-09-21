@@ -46,20 +46,14 @@ public class Menu {
         System.out.println("Compra ingresada exitosamente.");
     }
     public void editar(){
-        System.out.println("\nMenu Editar");
-        System.out.println("1. Estado de orden");
-        System.out.println("2. Proveedor");
-        System.out.println("3. Cliente");   
-        System.out.println("4. Regresar");        
-        opcion = entrada.nextLine();        
+        System.out.println("\nEditar Estado");
+        System.out.println("1. Orden de venta");
+        System.out.println("2. Pedido");
+        System.out.println("3. Regresar");           
     }
     public void editarEstado(){
-        //System.out.println("Editar orden");
-        //System.out.println("Ingresar No. de orden:");
-        //System.out.println("Actual: Materiales en bodega");
-
         System.out.println("1. Proceso de corte");
-        System.out.println("2. Proceso de ensamble");
+        System.out.println("2. Proceso de armadao");
         System.out.println("3. Proceso de acabados");
         System.out.println("4. Proceso de entrega");
     }        

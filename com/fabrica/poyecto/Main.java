@@ -26,6 +26,43 @@ public class Main{
                 break;
                 case "3":
                     menu.editar();
+                    opcion = entrada.nextLine();
+                    switch(opcion){
+                        case "1":
+                            opcion = entrada.nextLine();
+                            switch(opcion){
+                                case "1":
+                                    menu.editarEstado();
+                                    opcion = entrada.nextLine();
+                                    switch(opcion){
+                                        case"1":
+                                        //Proceso de corte
+                                        archivo.editarEstadoV();
+                                        case"2":
+                                        //Proceso de armado
+                                        case"3":
+                                        //Proceso de acabado
+                                        case"4":
+                                        //Proceso de entrega
+                                    }
+                                    break;
+                                case "2":
+
+                                    break;
+                                case "3":
+
+                                    break;
+                                default:
+                                    System.out.println("Opcion no valida");
+                                    break;
+                            }   
+                            break;
+                        case "2":
+                            break;
+                        case "3":
+                            break; 
+                    }
+            
                 break;
                 case "4":
                     menu.crear();

@@ -94,6 +94,10 @@ public class Archivo {
             return false;
         }
     }
+    public void modificarEstado(String buscar, String nuevoValor, String operacion){
+
+        modificarRegistro(buscar, fInventario, 0, 1, nuevoValor, operacion);
+    }
     public String retoranaIdM(String buscar){
         String id=null;
         try(FileReader fr = new FileReader(fMaterial);
